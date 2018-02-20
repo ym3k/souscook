@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Foodstocks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Article</th>
+      <th>Quantity</th>
+      <th>Beforedate</th>
+      <th>Buyingdate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @foodstocks.each do |foodstock| %>
+      <tr>
+        <td><%= foodstock.article %></td>
+        <td><%= foodstock.quantity %></td>
+        <td><%= foodstock.beforedate %></td>
+        <td><%= foodstock.buyingdate %></td>
+        <td><%= link_to 'Show', foodstock %></td>
+        <td><%= link_to 'Edit', edit_foodstock_path(foodstock) %></td>
+        <td><%= link_to 'Destroy', foodstock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Foodstock', new_foodstock_path %>

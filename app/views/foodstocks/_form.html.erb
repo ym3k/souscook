@@ -1,0 +1,37 @@
+<%= form_with(model: foodstock, local: true) do |form| %>
+  <% if foodstock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(foodstock.errors.count, "error") %> prohibited this foodstock from being saved:</h2>
+
+      <ul>
+      <% foodstock.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :article %>
+    <%= form.text_field :article, id: :foodstock_article %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity, id: :foodstock_quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :beforedate %>
+    <%= form.date_select :beforedate, id: :foodstock_beforedate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :buyingdate %>
+    <%= form.date_select :buyingdate, id: :foodstock_buyingdate %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

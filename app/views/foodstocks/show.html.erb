@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Article:</strong>
+  <%= @foodstock.article %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @foodstock.quantity %>
+</p>
+
+<p>
+  <strong>Beforedate:</strong>
+  <%= @foodstock.beforedate %>
+</p>
+
+<p>
+  <strong>Buyingdate:</strong>
+  <%= @foodstock.buyingdate %>
+</p>
+
+<%= link_to 'Edit', edit_foodstock_path(@foodstock) %> |
+<%= link_to 'Back', foodstocks_path %>

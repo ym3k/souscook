@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  article: MyString
+  quantity: 1.5
+  beforedate: 2018-02-20
+  buyingdate: 2018-02-20
+
+two:
+  article: MyString
+  quantity: 1.5
+  beforedate: 2018-02-20
+  buyingdate: 2018-02-20

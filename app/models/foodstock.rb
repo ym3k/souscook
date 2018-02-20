@@ -1,0 +1,2 @@
+class Foodstock < ApplicationRecord
+end
