@@ -1,0 +1,27 @@
+<div class='row'>
+    <div class='login col-md-6'>
+      <div class='inner'>
+        <h1 class='centerize'>Welcome</h1>
+        <%= form_with(scope: :session, url: sessions_path) do |f| %>
+          <%= f.label :login %>
+          <%= f.email_field :email, class: 'widthall' %>
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'widthall' %>
+          <div class='centerize'>
+          <%= f.submit "Log in", class: 'btn-ym btn-ym-default'%>
+          </div>
+          <div class='centerize'>
+          <%= link_to "or Register?", new_user_path %>
+          </div>
+          <h3 class='centerize'>
+            <%= link_to "SousCOOK", root_path %>
+          </h3>
+          <div class='centerize'>
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, class: "#{key}") %>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+</div>
