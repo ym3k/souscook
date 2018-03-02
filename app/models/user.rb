@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   # ↑ on: create を入れることで、作成時のみpasswordのチェックをする。
-  # has_many :pictures
-  # has_many :favorites, dependent: :destroy
-  # has_many :favorite_pictures, through: :favorites, source: :picture
+  has_many :recipes
+  has_many :foodstocks
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_recipes, through: :favorites, source: :recipe
 end

@@ -1,5 +1,6 @@
 class FoodstocksController < ApplicationController
   before_action :set_foodstock, only: [:show, :edit, :update, :destroy]
+  before_action :set_login, only: [:new, :edit, :show, :destroy]
 
   # GET /foodstocks
   # GET /foodstocks.json
@@ -25,6 +26,7 @@ class FoodstocksController < ApplicationController
   # POST /foodstocks.json
   def create
     @foodstock = Foodstock.new(foodstock_params)
+    @foodstock.user_id = current_user.id
 
     respond_to do |format|
       if @foodstock.save
@@ -65,6 +67,12 @@ class FoodstocksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_foodstock
       @foodstock = Foodstock.find(params[:id])
+    end
+
+    def set_login
+      if !logged_in?
+        redirect_to new_session_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_login, only: [:new, :edit, :show, :destroy]
 
   # GET /recipes
   # GET /recipes.json
@@ -25,6 +26,7 @@ class RecipesController < ApplicationController
   # POST /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.user_id = current_user.id
 
     respond_to do |format|
       if @recipe.save
@@ -67,8 +69,14 @@ class RecipesController < ApplicationController
       @recipe = Recipe.find(params[:id])
     end
 
+    def set_login
+      if !logged_in?
+        redirect_to new_session_path
+      end
+    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:title, :recipe, :photo, :memo, :extlink)
+      params.require(:recipe).permit(:title, :ingredient, :recipe, :photo, :memo, :extlink)
     end
 end
