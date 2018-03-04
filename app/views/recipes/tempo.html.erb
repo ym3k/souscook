@@ -1,0 +1,19 @@
+<form id="frm" name="frm" method="GET" action="">
+    <div>新しい行を追加：<input type="button" id="add" name="add" value="追加" onclick="appendRow()"></div>
+    <table border="1" id="tbl">
+    <tr>
+        <th style="text-align:right; width:40px;">番号</th>
+        <th style="">入力文字</th>
+        <th style="background-color: green; width:40px;"> </th>
+        <th style="background-color: red; width:40px;"> </th>
+    </tr>
+    <tr>
+        <td style="text-align:right; width:40px;"><span class="seqno">1</span></td>
+        <td style=""><input class="inpval" type="text" id="txt1" name="txt1" value="blah blah blah" size="30" readonly style="border:none"></td>
+        <td style="background-color: green; width:40px;"><input class="edtbtn" type="button" id="edtBtn1" value="編集" onclick="editRow(this)"></td>
+        <td style="background-color: red; width:40px;"><input class="delbtn" type="button" id="delBtn1" value="削除" onclick="deleteRow(this)"></td>
+    </tr>
+    </table>
+    <input type="submit" value="送信">
+</form>
+

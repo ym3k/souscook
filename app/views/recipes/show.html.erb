@@ -12,7 +12,6 @@
     <tr>
       <th>Article</th>
       <th>Quantity</th>
-      <th colspan="2"></th>
     </tr>
     </thead>
     <tbody>
@@ -20,8 +19,6 @@
       <tr>
         <td><%= ingredient.article %></td>
         <td><%= ingredient.quantity %></td>
-        <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
-        <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
     </tbody>

@@ -18,7 +18,33 @@
 
   <div class="field">
     <%= form.label :ingredient %>
-    <%= form.text_area :ingredient, id: :recipe_ingredient %>
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Article</th>
+          <th>Quantity</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @recipe.ingredients.each do |ingredient| %>
+        <tr>
+          <td><%= ingredient.id %></td>
+          <td><input class="inpval" type="text" id="article<%= ingredient.id %>"
+              name="txt<%= @rows %>" value="<%= ingredient.article %>">
+          </td>
+          <td><input class="inpval" type="text" id="quantity<%= ingredient.id %>"
+              name="txt<%= @rows %>" value="<%= ingredient.quantity %>">
+          </td>
+          <td><input class="delbtn" type="button" id="delBtn<%= ingredient.id %>"
+              value="削除" onclick="deleteRow(this)">
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div>Add ingredient：<input type="button" id="add" name="add" value="追加" onclick="appendRow()"></div>
   </div>
 
   <div class="field">
