@@ -7,7 +7,25 @@
 
 <p>
   <strong>Ingredient:</strong>
-  <%= @recipe.ingredient %>
+  <table>
+    <thead>
+    <tr>
+      <th>Article</th>
+      <th>Quantity</th>
+      <th colspan="2"></th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @recipe.ingredients.each do |ingredient| %>
+      <tr>
+        <td><%= ingredient.article %></td>
+        <td><%= ingredient.quantity %></td>
+        <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
+        <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </p>
 
 <p>
@@ -30,5 +48,13 @@
   <%= @recipe.extlink %>
 </p>
 
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<% if @favorite.present? %>
+  <%= link_to 'お気に入り解除する', favorite_path(recipe_id: @recipe.id), method: :delete, class: 'btn btn-danger' %>
+<% else %>
+  <%= link_to 'お気に入りする', favorites_path(recipe_id: @recipe.id), method: :post, class: 'btn btn-primary' %>
+<% end %>
+<% if @recipe.user == current_user %>
+  <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<% end %>
+
 <%= link_to 'Back', recipes_path %>

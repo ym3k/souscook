@@ -7,7 +7,7 @@
 
 <p>
   <strong>Quantity:</strong>
-  <%= @foodstock.quantity %>
+  <%= @foodstock.quantity.to_s + @foodstock.unit.unit %>
 </p>
 
 <p>

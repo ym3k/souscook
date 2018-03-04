@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1
   # GET /recipes/1.json
   def show
+    @favorite = current_user.favorites.find_by(recipe_id: @recipe.id)
   end
 
   # GET /recipes/new

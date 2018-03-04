@@ -5,7 +5,7 @@ class FoodstocksController < ApplicationController
   # GET /foodstocks
   # GET /foodstocks.json
   def index
-    @foodstocks = Foodstock.all
+    @foodstocks = Foodstock.where(user_id: current_user.id)
   end
 
   # GET /foodstocks/1
@@ -77,6 +77,6 @@ class FoodstocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def foodstock_params
-      params.require(:foodstock).permit(:article, :quantity, :beforedate, :buyingdate)
+      params.require(:foodstock).permit(:article, :quantity, :beforedate, :buyingdate, :unit_id)
     end
 end
