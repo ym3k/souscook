@@ -1,0 +1,79 @@
+<%= form_with(model: recipe, local: true) do |form| %>
+  <% if recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+      <% recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :recipe_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ingredient %>
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Article</th>
+          <th>Quantity</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @count = 1 %>
+        <% @recipe.ingredients.each do |ingredient| %>
+        <% 
+          @art = 'article' + @count.to_s
+          @qty = 'quantity' + @count.to_s
+        %>
+        <tr>
+          <td><%= ingredient.id %></td>
+          <td><input class="artval" type="text" id="<%= @art %>"
+              name="<%= @art %>" value="<%= ingredient.article %>">
+          </td>
+          <td><input class="qtyval" type="text" id="<%= @qty %>"
+              name="<%= @qty %>" value="<%= ingredient.quantity %>">
+          </td>
+          <td><input class="delbtn" type="button" id="delBtn<%= ingredient.id %>"
+              value="削除" onclick="deleteRow(this)">
+          </td>
+        </tr>
+        <% @count += 1 %>
+        <% end %>
+      </tbody>
+    </table>
+    <div>Add ingredient：<input type="button" id="add" name="add" value="追加" onclick="appendRow()"></div>
+  </div>
+
+  <div class="field">
+    <%= form.label :recipe %>
+    <%= form.text_area :recipe, id: :recipe_recipe %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photo %>
+    <%= form.text_field :photo, id: :recipe_photo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :memo %>
+    <%= form.text_area :memo, id: :recipe_memo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :extlink %>
+    <%= form.text_field :extlink, id: :recipe_extlink %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

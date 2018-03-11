@@ -59,6 +59,7 @@ gem 'mini_magick'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'font-awesome-sass'
+gem 'jquery-turbolinks'
 
 group :development do
   gem 'letter_opener_web'
