@@ -1,11 +1,19 @@
-function searchCookpad(){
+function searchCookpad(action){
 	var str ="";
 	var ingredients = document.getElementsByName("ingredient");
+	var form = $('#dishes-form');
+ 
+    for (var i = 0; i < ingredients.length; i++){
+        if(ingredients[i].checked)
+            str = str + ingredients[i].value + " ";
+    }
 
-	for (var i = 0; i < ingredients.length; i++){
-		if(ingredients[i].checked) //(color2[i].checked === true)と同じ
-			str = str + ingredients[i].value + " ";
-	}
-
-	document.getElementById("result2").innerHTML = str;
+	$('<input>').attr({
+		'type': 'hidden',
+		'name': 'ingredients',
+		'value': str
+	}).appendTo(form);
+	form.submit();
+	document.getElementById("result").innerHTML = str;
 }
+

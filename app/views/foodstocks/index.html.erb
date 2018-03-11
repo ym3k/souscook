@@ -34,5 +34,7 @@
 
 <%= link_to '食材を追加', new_foodstock_path %>
 
+<%= form_tag('dishes', :method => :post, :id => 'dishes-form', remote: true) do |form| %>
 <input type="button" value="クックパッドで検索" onclick="searchCookpad()"/>
-<span id="result2"></span>
+<% end %>
+<span id="result"></span>

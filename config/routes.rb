@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :dishes, only: [:create]
+
   root 'foodstocks#index'
 
   resources :users, only: [:new, :create, :show, :update, :edit]

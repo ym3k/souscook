@@ -1,6 +1,6 @@
 class FoodstocksController < ApplicationController
   before_action :set_foodstock, only: [:show, :edit, :update, :destroy]
-  before_action :set_login, only: [:new, :edit, :show, :destroy]
+  before_action :set_login, only: [:index, :new, :edit, :show, :destroy]
 
   # GET /foodstocks
   # GET /foodstocks.json
