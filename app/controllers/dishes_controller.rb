@@ -9,6 +9,7 @@ class DishesController < ApplicationController
     @ingredients_key = params[:ingredients]
     @dishes = search_cookpad(@ingredients_key)
     respond_to do |format|
+      format.js   {}
       format.json {
         render json: @dishes, status: 200
       }

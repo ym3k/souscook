@@ -14,6 +14,6 @@ function searchCookpad(action){
 		'value': str
 	}).appendTo(form);
 	form.submit();
-	document.getElementById("result").innerHTML = str;
+	document.getElementById("result").innerHTML = str + "で検索";
 }
 
