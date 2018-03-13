@@ -5,7 +5,7 @@ class Recipe < ApplicationRecord
   has_many :favorite_users, through: :favorites, source: :user
   #has_many :ingredients, dependent: :destroy
   # 複数の子レコードを管理する
-  has_many :ingredients
+  has_many :ingredients, dependent: :destroy
   accepts_nested_attributes_for :ingredients, allow_destroy: true
   #mount_uploader :image, ImageUploader
 end

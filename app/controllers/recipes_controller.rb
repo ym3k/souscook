@@ -1,4 +1,8 @@
 class RecipesController < ApplicationController
+  require 'nokogiri'
+  require 'open-uri'
+  require 'uri'
+
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
   before_action :set_login, only: [:new, :edit, :show, :destroy]
 
@@ -16,8 +20,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/new
   def new
-    @recipe = Recipe.new
-    @recipe.ingredients.build
+    @recipe = Recipe.new(new_recipe_params)
   end
 
   # GET /recipes/1/edit
@@ -86,4 +89,44 @@ class RecipesController < ApplicationController
     def update_recipe_params
       params.require(:recipe).permit(:title, :recipe, :photo, :memo, :extlink, ingredients_attributes: [:article, :quantity, :_destroy, :id])
     end
+
+    def new_recipe_params
+      new_param = params.permit(:extlink)
+      unless new_param['extlink'].blank? 
+        get_recipe_from_cookpad(new_param['extlink'], new_param)
+        new_param
+      else
+        return nil 
+      end
+    end
+
+    def get_recipe_from_cookpad(extlink, params)
+      url = URI.escape(extlink)
+      charset = nil
+  
+      html = open(url) do |f|
+        charset = f.charset
+        f.read
+      end
+
+      doc = Nokogiri::HTML.parse(html, nil, charset)
+      params['title'] = doc.xpath('//div[@id="recipe-title"]').text.gsub(/\n/, '')
+      params['memo']  = doc.xpath('//div[@class="description_text"]').text.gsub(/\n/, '')
+      params['photo'] = doc.xpath('//div[@id="main-photo"]').search('img')[0].attributes['src'].value
+
+      ingredients_list = doc.xpath('//div[@id="ingredients_list"]')
+      ing_art = ingredients_list.search('div[@class="ingredient_name"]').map { |art|
+        art.text.gsub(/\n/, '')
+      }
+      ing_qty = ingredients_list.search('div[@class="ingredient_quantity amount"]').map { |qty|
+        qty.text.gsub(/\n/, '')
+      }
+      params['ingredients_attributes'] = ing_art.zip(ing_qty).map {|ing_set| 
+        {
+          :article => ing_set[0],
+          :quantity => ing_set[1]
+        }
+      }
+    end
+
 end

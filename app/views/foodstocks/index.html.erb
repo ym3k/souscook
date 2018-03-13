@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <h1>食材一覧</h1>
-
+<%= link_to '食材を追加', new_foodstock_path %>
 <table>
   <thead>
     <tr>
       <th></th>
-      <th>Article</th>
-      <th colspan="2">Quantity</th>
-      <th>Beforedate</th>
-      <th>Buyingdate</th>
+      <th>品目</th>
+      <th colspan="2">数量</th>
+      <th>賞味期限</th>
+      <th>購入日</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -32,12 +32,15 @@
 
 <br>
 
-<%= link_to '食材を追加', new_foodstock_path %>
-
+<p>↑チェックを入れた食材で検索</p>
 <%= form_tag('dishes', :method => :post, :id => 'dishes-form', remote: true) do |form| %>
+<input type='text' id="keyword" size="40" placeholder="検索キーワード(カレー、うどん、中華風...など)">
 <input type="button" value="クックパッドで検索" onclick="searchCookpad()"/>
 <% end %>
+<span class="text-warning" id="search_error"></span>
 <span id="result"></span>
 
-<ul id="dishes">
-</ul>
+<div class="col-md-12" >
+  <div class="card-columns" id="dishes"> 
+  </div>
+</div>

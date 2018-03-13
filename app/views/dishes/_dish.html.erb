@@ -1,1 +1,19 @@
-<li><%= @dishes %></li>
+<% @dishes.each do |dish| %>
+<div class="card" >
+  <div class="card-block">
+    <h5 class="card-subtitle mb-2 text-muted" style="display: inline-block">
+      <%= link_to dish['title'], dish['extlink'] %> 
+    </h5>
+    <%= image_tag dish['img'], class: "card-img-top img-fluid" %>
+    <h6 class="card-subtitle mb-2 text-muted" style="display: inline-block;padding:0 10px;">
+      <%= dish['description'] %>
+    </h6>
+    <p class="card-text">
+      <%= dish['ingredients'] %>
+    </p>
+    <p class="card-text">
+      <%= link_to 'アレンジしてレシピに登録', new_recipe_path() + "?extlink=" + dish['extlink'] %>
+    </p>
+  </div>
+</div>
+<% end %>

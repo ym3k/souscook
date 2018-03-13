@@ -29,9 +29,12 @@ recipes = doc.xpath('//div[@class="recipe-preview"]').map { |node|
     :extlink  => cpsite + node.css('a')[0].attributes['href'].value,
     :img   => node.css('img')[0].attributes['src'].value,
     :title => node.css('a')[1].inner_text,
-    :description => node.xpath('//div[@class="recipe_description"]').inner_text,
-    :ingredients => node.xpath('//div[@class="material ingredients"]').inner_text
+    :description => node.search('div[@class="recipe_description"]').text,
+    :ingredients => node.search('div[@class="material ingredients"]').text
   }
 }
 
 p recipes
+
+# nodeset = doc.xpath('//div[@class="recipe-preview"]')
+# p nodeset[0].search('div[@class="recipe_description"]').text
