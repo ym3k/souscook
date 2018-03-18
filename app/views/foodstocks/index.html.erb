@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>食材一覧</h1>
-<%= link_to '食材を追加', new_foodstock_path %>
+<p>冷蔵庫やパントリーにある食材を追加していってください</p>
 <table>
   <thead>
     <tr>
@@ -27,12 +27,20 @@
         <td><%= link_to '削除', foodstock, method: :delete, data: { confirm: '削除していいですか?' } %></td>
       </tr>
     <% end %>
+      <tr>
+        <td colspan=6></td>
+        <td colspan=2>
+          <%= link_to '食材を追加', new_foodstock_path, class: 'btn btn-warning' %>
+        </td>
+      </tr>
+      <tr>
+        <td>↑</td>
+        <td colspan=5>チェックを入れた食材でできる料理を検索</td>
+        <td columns=2></td>
+      </tr>
   </tbody>
 </table>
 
-<br>
-
-<p>↑チェックを入れた食材で検索</p>
 <%= form_tag('dishes', :method => :post, :id => 'dishes-form', remote: true) do |form| %>
 <input type='text' id="keyword" size="40" placeholder="検索キーワード(カレー、うどん、中華風...など)">
 <input type="button" value="クックパッドで検索" onclick="searchCookpad()"/>

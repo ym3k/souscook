@@ -5,17 +5,18 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   </head>
   <% if current_page?(:controller => 'sessions', :action => 'new') %>
   <body class="login_bg">
   <% else %>
   <body>
-    <div style="width:100%" class="bg-primary">
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary navbar-ym">
+    <div style="width:100%">
+    <nav class="navbar navbar-toggleable-md navbar-inverse navbar-ym">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -56,8 +57,10 @@
       <%= yield %>
     </div>
   <% unless current_page?(:controller => 'sessions', :action => 'new') %>
-  　<footer class="footer bg-primary">
-        <p>Copyright © 2018 Tomoyuki YAMAZAKI/2017-09 ALL RIGHTS RESERVED</p>
+  　<footer class="footer">
+      <div class="container">
+        <p class="text-muted">Copyright © 2018 Tomoyuki YAMAZAKI/2017-09 ALL RIGHTS RESERVED</p>
+      </div>
     </footer>
   <% end %>
   </body>

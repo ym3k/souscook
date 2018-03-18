@@ -25,3 +25,22 @@ function searchCookpad(action){
 		document.getElementById("result").innerHTML = str + "で検索";
 	}
 }
+
+document.addEventListener("turbolinks:load", function() {
+	$(function() {
+		$('form').on('click', '.remove_fields', function(event) {
+		  $(this).prev('input[type=hidden]').val('1');
+		  $(this).closest('fieldset').hide();
+		//   console.log("remove_fieldsss")
+		  return event.preventDefault();
+		});
+		return $('form').on('click', '.add_fields', function(event) {
+		  var regexp, time;
+		  time = new Date().getTime();
+		  regexp = new RegExp($(this).data('id'), 'g');
+		  $(this).before($(this).data('fields').replace(regexp, time));
+		//   console.log("add_fieldsss")
+		  return event.preventDefault();
+		});
+	});
+})

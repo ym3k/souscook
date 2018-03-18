@@ -4,12 +4,12 @@ class RecipesController < ApplicationController
   require 'uri'
 
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
-  before_action :set_login, only: [:new, :edit, :show, :destroy]
+  before_action :set_login, only: [:index, :new, :edit, :show, :destroy]
 
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.where(user_id: current_user.id)
   end
 
   # GET /recipes/1
@@ -83,11 +83,11 @@ class RecipesController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:title, :recipe, :photo, :memo, :extlink, ingredients_attributes: [:article, :quantity])
+      params.require(:recipe).permit(:title, :recipe, :photo, :myphoto, :memo, :extlink, ingredients_attributes: [:article, :quantity])
     end
 
     def update_recipe_params
-      params.require(:recipe).permit(:title, :recipe, :photo, :memo, :extlink, ingredients_attributes: [:article, :quantity, :_destroy, :id])
+      params.require(:recipe).permit(:title, :recipe, :photo, :myphoto, :memo, :extlink, ingredients_attributes: [:article, :quantity, :_destroy, :id])
     end
 
     def new_recipe_params

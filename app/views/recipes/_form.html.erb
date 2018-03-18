@@ -1,4 +1,4 @@
-<%= form_with(model: recipe, local: true) do |form| %>
+<%= form_with(model: recipe, local: true, html: { multipart: true }) do |form| %>
   <% if recipe.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
@@ -12,39 +12,47 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :recipe_title %>
+    <%= form.text_field :title, id: :recipe_title, placeholder: "料理名", :size=>"50" %>
   </div>
 
   <div class="field">
-    <%= form.label :ingredients %>
+    <h5><%= form.label :材料 %></h5>
     <%= form.fields_for :ingredients do |ingredients_form| %>
       <%= render "ingredient_fields", f: ingredients_form %>
     <% end %>
     <%= link_to_add_fields "追加", form, :ingredients %>
   </div>
 
+
   <div class="field">
-    <%= form.label :recipe %>
-    <%= form.text_area :recipe, id: :recipe_recipe %>
+    <h5><%= form.label :写真を登録・変更 %></h5>
+    <%= form.hidden_field :photo, id: :recipe_photo %>
+    <%= form.file_field :myphoto, id: :recipe_myphoto %>
+    <br/>
+    <% if not @recipe.myphoto.blank? %>
+      <%= image_tag(@recipe.myphoto) %>
+    <% elsif not @recipe['photo'].blank? then %>
+      <%= image_tag(@recipe['photo']) %>
+    <% end %>
+    <%= form.hidden_field :photo_cache %>
   </div>
 
   <div class="field">
-    <%= form.label :photo %>
-    <%= form.text_field :photo, id: :recipe_photo %>
+    <h5><%= form.label :コツ・作るときの注意点  %></h5>
+    <%= form.text_area :recipe, id: :recipe_recipe, :size=>"50x10" %>
   </div>
 
   <div class="field">
-    <%= form.label :memo %>
-    <%= form.text_area :memo, id: :recipe_memo %>
+    <h5><%= form.label :ひとこと・メモ  %></h5>
+    <%= form.text_area :memo, id: :recipe_memo, :size=>"50x5" %>
   </div>
 
+
   <div class="field">
-    <%= form.label :extlink %>
-    <%= form.text_field :extlink, id: :recipe_extlink %>
+    <%= form.hidden_field :extlink, id: :recipe_extlink %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "登録", class: 'btn btn-warning' %>
   </div>
 <% end %>

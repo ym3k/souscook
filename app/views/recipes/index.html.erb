@@ -1,35 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Recipes</h1>
+<h1>保存されたレシピ一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Recipe</th>
-      <th>Photo</th>
-      <th>Memo</th>
-      <th>Extlink</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<p>
+<%= link_to '新しくレシピを作成する', new_recipe_path, class: 'btn btn-warning' %>
+</p>
+<div class="col-md-12" >
+  <div class="card-columns"> 
+  <% @recipes.each do |recipe| %>
+    <div class="card" >
+    <!-- <div class="card" style="width: 20rem;"> -->
+      <% if not recipe.myphoto.blank? %>
+        <%= image_tag recipe.myphoto, class: "card-img-top img-fluid recipe-index" %>
+      <% elsif not recipe.photo.blank? %>
+        <%= image_tag recipe.photo, class: "card-img-top img-fluid recipe-index" %>
+      <% end %>
+      <div class="card-block">
+        <!-- <h4 class="card-title">Card title</h4> -->
+        <h6 class="card-subtitle mb-2 text-muted" style="display: inline-block">
+          <%= recipe.title %> 
+        </h6>
+        <p class="card-text">
+          <%= recipe.memo %>
+        </p>
+        <%= link_to 'Show', recipe, class: "btn btn-warning" %>
+        <% if recipe.user == current_user %>
+          <%= link_to 'Edit', edit_recipe_path(recipe) , class: "btn btn-warning"%>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  </div> 
+</div>
 
-  <tbody>
-    <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= recipe.title %></td>
-        <td><%= recipe.recipe %></td>
-        <td><%= recipe.photo %></td>
-        <td><%= recipe.memo %></td>
-        <td><%= recipe.extlink %></td>
-        <td><%= link_to 'Show', recipe %></td>
-        <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-        <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
-
-<%= link_to 'New Recipe', new_recipe_path %>

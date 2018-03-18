@@ -12,27 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :article %>
+    <%= form.label :食材名 %>
     <%= form.text_field :article, id: :foodstock_article %>
   </div>
 
   <div class="field">
-    <%= form.label :quantity %>
+    <%= form.label :数量 %>
     <%= form.text_field :quantity, id: :foodstock_quantity %>
   </div>
 
   <div class="field">
-    <%= form.label :unit %>
+    <%= form.label :単位 %>
     <%= form.collection_select :unit_id, Unit.all, :id, :unit %>
   </div>
 
   <div class="field">
-    <%= form.label :beforedate %>
+    <%= form.label :賞味期限 %>
     <%= form.date_select :beforedate, id: :foodstock_beforedate %>
   </div>
 
   <div class="field">
-    <%= form.label :buyingdate %>
+    <%= form.label :購入日 %>
     <%= form.date_select :buyingdate, id: :foodstock_buyingdate %>
   </div>
 

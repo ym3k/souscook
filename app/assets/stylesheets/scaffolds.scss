@@ -2,13 +2,15 @@ body {
   background-color: #fff;
   color: #333;
   margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "Rounded Mplus 1c", verdana, arial, helvetica, sans-serif !important;
   font-size: 13px;
   line-height: 18px;
+  height:auto !important;
+  padding-bottom: 60px;
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "Rounded Mplus 1c", verdana, arial, helvetica, sans-serif !important;
   font-size: 13px;
   line-height: 18px;
 }
@@ -81,4 +83,10 @@ div {
 
 label {
   display: block;
+}
+
+img.recipe-index {
+  width: 280px;
+  height: 290px;
+  object-fit: cover;
 }

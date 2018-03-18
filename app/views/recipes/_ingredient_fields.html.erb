@@ -1,6 +1,6 @@
 <fieldset>
-    <%= f.text_field :article %>
-    <%= f.text_field :quantity %>
+    <%= f.text_field :article, placeholder:"品名" %>
+    <%= f.text_field :quantity, placeholder:"数量" %>
     <%= f.hidden_field :_destroy %>
     <%= link_to "削除", "#", class: "remove_fields" %>
 </fieldset>

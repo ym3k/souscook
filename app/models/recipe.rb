@@ -8,4 +8,5 @@ class Recipe < ApplicationRecord
   has_many :ingredients, dependent: :destroy
   accepts_nested_attributes_for :ingredients, allow_destroy: true
   #mount_uploader :image, ImageUploader
+  mount_uploader :myphoto, DimageUploader
 end
