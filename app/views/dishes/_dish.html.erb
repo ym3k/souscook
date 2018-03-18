@@ -1,11 +1,11 @@
 <% @dishes.each do |dish| %>
 <div class="card" >
   <div class="card-block">
-    <h5 class="card-subtitle mb-2 text-muted" style="display: inline-block">
+    <h5 class="card-subtitle mb-2 text-muted" >
       <%= link_to dish['title'], dish['extlink'] %> 
     </h5>
-    <%= image_tag dish['img'], class: "card-img-top img-fluid" %>
-    <h6 class="card-subtitle mb-2 text-muted" style="display: inline-block;padding:0 10px;">
+    <%= image_tag dish['img'], class: "card-img-top" %>
+    <h6 class="card-subtitle mb-2 text-muted">
       <%= dish['description'] %>
     </h6>
     <p class="card-text">
