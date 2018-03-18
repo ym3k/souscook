@@ -21,4 +21,5 @@
 # ym3k add
 .env
 .DS_Store
-/public/*
+/public/tmp/*
+/public/uploads/*
