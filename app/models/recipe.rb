@@ -1,4 +1,7 @@
 class Recipe < ApplicationRecord
+  validates :title, presence: true, length: { maximum: 140 }
+  validates :memo, length: { maximum: 500 }
+  validates :recipe, length: { maximum: 500 }
   default_scope -> { order(updated_at: :desc) }
   belongs_to :user
   has_many :favorites, dependent: :destroy

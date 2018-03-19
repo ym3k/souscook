@@ -11,32 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :食材名 %>
-    <%= form.text_field :article, id: :foodstock_article %>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">食材名</label>
+    <div class="col-sm-6">
+      <%= form.text_field :article, id: :foodstock_article, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :数量 %>
-    <%= form.text_field :quantity, id: :foodstock_quantity %>
+  <div class="form-groups row">
+    <label class="col-sm-2 col-form-label">数量</label>
+    <div class="col-sm-4 col-4">
+      <%= form.text_field :quantity, id: :foodstock_quantity, class: "form-control" %>
+    </div>
+    <div class="form-inline">
+      <%= form.collection_select :unit_id, Unit.all, :id, :unit, {prompt: false}, {class: "form-control"} %>
+    </div>
+  </div>
+  <p></p>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">賞味期限</label>
+    <%= form.date_select :beforedate, id: :foodstock_beforedate, :use_month_numbers => true, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :単位 %>
-    <%= form.collection_select :unit_id, Unit.all, :id, :unit %>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">購入日</label>
+    <%= form.date_select :buyingdate, id: :foodstock_buyingdate, :use_month_numbers => true %>
   </div>
 
-  <div class="field">
-    <%= form.label :賞味期限 %>
-    <%= form.date_select :beforedate, id: :foodstock_beforedate %>
-  </div>
-
-  <div class="field">
-    <%= form.label :購入日 %>
-    <%= form.date_select :buyingdate, id: :foodstock_buyingdate %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions form-group">
+    <%= form.submit "食材を追加" %>
   </div>
 <% end %>
