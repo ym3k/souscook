@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div class="form-groups row">
+  <div class="form-group row">
     <label class="col-sm-2 col-form-label">数量</label>
     <div class="col-sm-4 col-4">
       <%= form.text_field :quantity, id: :foodstock_quantity, class: "form-control" %>
@@ -27,10 +27,10 @@
       <%= form.collection_select :unit_id, Unit.all, :id, :unit, {prompt: false}, {class: "form-control"} %>
     </div>
   </div>
-  <p></p>
+
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">賞味期限</label>
-    <%= form.date_select :beforedate, id: :foodstock_beforedate, :use_month_numbers => true, class: "form-control" %>
+    <%= form.date_select :beforedate, id: :foodstock_beforedate, use_month_numbers: true %>
   </div>
 
   <div class="form-group row">

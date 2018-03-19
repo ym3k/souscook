@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+select#foodstock_beforedate_1i {
+    margin-left: 15px;
+}
+
+select#foodstock_buyingdate_1i {
+    margin-left: 15px;
+}
