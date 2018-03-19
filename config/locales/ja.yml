@@ -1,6 +1,37 @@
 ---
 ja:
   activerecord:
+    models:
+      dish: "料理"
+      favorite: "お気に入り"
+      foodstock: "食材"
+      ingredient: "材料"
+      recipe: "レシピ"
+      unit: "単位"
+      user: "ユーザー"
+    attributes:
+      foodstock:
+        article: "食材名"
+        quantity: "数量"
+        beforedate: "賞味期限"
+        buyingdate: "購入日"
+      ingredient:
+        article: "食材名"
+        quantity: "数量"
+      recipe:
+        title: "料理名"
+        recipe: "作り方のコツ欄"
+        photo: "写真へのリンク"
+        memo: "ひとこと・メモ欄"
+        extlink: "外部リンク先"
+        myphoto: "登録した写真"
+      unit:
+        unit: "単位名"
+      user:
+        name: "お名前・ニックネーム"
+        email: "Eメールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認)"
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"

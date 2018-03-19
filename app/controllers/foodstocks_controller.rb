@@ -30,7 +30,7 @@ class FoodstocksController < ApplicationController
 
     respond_to do |format|
       if @foodstock.save
-        format.html { redirect_to @foodstock, notice: 'Foodstock was successfully created.' }
+        format.html { redirect_to @foodstock, notice: '食材を登録しました。' }
         format.json { render :show, status: :created, location: @foodstock }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class FoodstocksController < ApplicationController
   def update
     respond_to do |format|
       if @foodstock.update(foodstock_params)
-        format.html { redirect_to @foodstock, notice: 'Foodstock was successfully updated.' }
+        format.html { redirect_to @foodstock, notice: '食材情報を更新しました。' }
         format.json { render :show, status: :ok, location: @foodstock }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class FoodstocksController < ApplicationController
   def destroy
     @foodstock.destroy
     respond_to do |format|
-      format.html { redirect_to foodstocks_url, notice: 'Foodstock was successfully destroyed.' }
+      format.html { redirect_to foodstocks_url, notice: '食材情報を削除しました。' }
       format.json { head :no_content }
     end
   end
