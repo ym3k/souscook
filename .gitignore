@@ -23,3 +23,5 @@
 .DS_Store
 /public/tmp/*
 /public/uploads/*
+Gemfile.lock
+
